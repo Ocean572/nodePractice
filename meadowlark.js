@@ -3,13 +3,9 @@ var exphbs = require('express-handlebars');
 
 var app = express();
 
-// array of fortune cookies
-var fortunes = ["Conquer your fears or they will conquer you.",
-"Rivers need springs.",
-"Do not fear what you don't know.",
-"You will have a pleasant surprise.",
-"Whenever possible, keep it simple.",
-];
+
+// fortune cookie quote on /about page
+var fortune = require('./lib/fortune.js');
 
 // set up handlebars view engine
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -25,8 +21,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/about', function(req, res){
-	var randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-	res.render('about', { fortune: randomFortune });
+	res.render('about', { fortune: fortune.getFortune() });
 });
 
 // 404 catch-all handler (middleware)
