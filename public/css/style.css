@@ -1,0 +1,13 @@
+img {
+    display: block;
+    margin: auto auto;
+    width: 50%;
+}
+
+h1#contactUs {
+    text-align: center;
+}
+
+.number {
+    text-align: center;
+}
